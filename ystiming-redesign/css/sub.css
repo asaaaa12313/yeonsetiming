@@ -1,0 +1,574 @@
+/* ═══════════════════════════════════════════════
+   SUB PAGE COMMON STYLES
+   히어로 배너, 서브 네비, 섹션 패턴
+   ═══════════════════════════════════════════════ */
+
+/* ─── Sub Hero Banner ─── */
+.sub-hero {
+  background: var(--navy);
+  padding: 160px 48px 48px;
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.sub-hero.has-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 22, 40, 0.7);
+  z-index: 0;
+}
+
+.sub-hero.has-bg > * {
+  position: relative;
+  z-index: 1;
+}
+.sub-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: rgba(255,255,255,.08);
+}
+.sub-hero-title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300;
+  color: var(--white);
+  letter-spacing: -.02em;
+  margin-bottom: 32px;
+}
+.sub-hero-title strong { font-weight: 700; }
+
+/* Sub Navigation */
+.sub-nav {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.sub-nav a {
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,.45);
+  border: 1px solid rgba(255,255,255,.1);
+  transition: color .3s, border-color .3s, background .3s;
+}
+.sub-nav a:hover,
+.sub-nav a.active {
+  color: var(--white);
+  border-color: var(--gold);
+  background: rgba(184,149,106,.12);
+}
+
+/* ─── Sub Section ─── */
+.sub-section {
+  padding: 120px 48px;
+}
+.sub-section:nth-child(odd) { background: var(--white); }
+.sub-section:nth-child(even) { background: var(--off-white); }
+
+/* Dark variant for specific sections */
+.sub-section.dark {
+  background: var(--navy);
+}
+.sub-section.dark .section-title { color: var(--white); }
+.sub-section.dark .section-desc { color: rgba(255,255,255,.6); }
+
+.sub-section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Wide variant */
+.sub-section-inner.wide {
+  max-width: var(--max-w);
+}
+
+/* ─── Two Column Layout ─── */
+.sub-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* 비대칭 비율 — 이미지 쪽이 더 큼 */
+.sub-two-col.img-large {
+  grid-template-columns: 1fr 1.3fr;
+}
+.sub-two-col.img-large.reverse {
+  grid-template-columns: 1.3fr 1fr;
+}
+
+/* Reverse column (image left, text right) */
+.sub-two-col.reverse {
+  direction: rtl;
+}
+.sub-two-col.reverse > * {
+  direction: ltr;
+}
+
+/* ─── Full-width Image + Text Overlay Section ─── */
+.sub-full-section {
+  position: relative;
+  min-height: 480px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 120px 48px;
+}
+.sub-full-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10,22,40,.88) 0%, rgba(10,22,40,.5) 60%, rgba(10,22,40,.3) 100%);
+}
+.sub-full-section > .section-content {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+}
+.sub-full-section .section-eyebrow { color: var(--gold); }
+.sub-full-section .section-title { color: var(--white); }
+.sub-full-section .section-title strong { color: var(--white); }
+.sub-full-section .section-desc { color: rgba(255,255,255,.7); max-width: 480px; }
+
+/* ─── Dark CTA Section ─── */
+.sub-cta-section {
+  background: var(--navy);
+  text-align: center;
+  padding: 100px 48px;
+}
+.sub-cta-section .section-eyebrow { color: var(--gold); }
+.sub-cta-section .section-title { color: var(--white); margin-bottom: 20px; }
+.sub-cta-section .section-desc { color: rgba(255,255,255,.6); max-width: 560px; margin: 0 auto 36px; }
+.sub-cta-section .btn-primary { margin: 0 8px; }
+
+/* ─── Vertical Timeline ─── */
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 48px auto 0;
+  padding-left: 72px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--gray-200);
+}
+.timeline-item {
+  position: relative;
+  padding: 28px 0 40px;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-num {
+  position: absolute;
+  left: -72px;
+  top: 28px;
+  width: 48px;
+  height: 48px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-en);
+  font-size: 16px;
+  font-weight: 600;
+  z-index: 1;
+}
+.timeline-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.timeline-desc {
+  font-size: 15px;
+  color: var(--gray-500);
+  line-height: 1.8;
+}
+
+/* ─── Numbered List + Large Image ─── */
+.numbered-list-section {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+.numbered-list-image {
+  aspect-ratio: 3/4;
+  background: var(--gray-100);
+  overflow: hidden;
+  border-radius: 4px;
+  position: sticky;
+  top: 120px;
+}
+.numbered-list-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.numbered-list {
+  padding-top: 12px;
+}
+.numbered-list-item {
+  display: flex;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--gray-100);
+  align-items: flex-start;
+}
+.numbered-list-item:last-child { border-bottom: none; }
+.numbered-list-num {
+  width: 40px;
+  height: 40px;
+  background: var(--navy);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-en);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.numbered-list-content { flex: 1; }
+.numbered-list-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.numbered-list-desc {
+  font-size: 14px;
+  color: var(--gray-500);
+  line-height: 1.7;
+}
+
+/* ─── Point Blocks (3열) ─── */
+.point-blocks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.point-block {
+  padding: 44px 28px 36px;
+  background: var(--off-white);
+  text-align: center;
+}
+.point-block-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.point-block-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+.point-block-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.point-block-desc {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.7;
+}
+
+/* ─── Image Placeholder ─── */
+.sub-img-placeholder {
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 50%, var(--gray-100) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  position: relative;
+  overflow: hidden;
+}
+.sub-img-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px; height: 40px;
+  border: 1px solid var(--gray-200);
+  border-radius: 50%;
+}
+
+/* ─── Facility Gallery Grid ─── */
+.facility-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 48px;
+}
+.facility-item {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: var(--gray-100);
+  overflow: hidden;
+  cursor: pointer;
+}
+.facility-item-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  background: transparent;
+  transition: background .3s, color .3s;
+}
+.facility-item:hover .facility-item-label {
+  background: rgba(12,27,46,.6);
+  color: var(--white);
+}
+
+/* ─── Doctor Profile (Sub page) ─── */
+.doctor-profile {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+.doctor-profile-photo {
+  aspect-ratio: 3/4;
+  background: linear-gradient(180deg, var(--gray-100) 0%, var(--gray-200) 100%);
+  position: relative;
+}
+.doctor-profile-cred {
+  font-size: 14px;
+  line-height: 2.2;
+  color: var(--gray-600);
+  margin-top: 28px;
+}
+.doctor-profile-cred .gold-dot {
+  color: var(--gold);
+}
+.doctor-profile-note {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--gray-400);
+}
+
+/* ─── Equipment / Feature Card ─── */
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+.feature-card {
+  padding: 32px;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  transition: border-color .3s, box-shadow .3s;
+}
+.feature-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 16px rgba(0,0,0,.04);
+}
+.feature-card-icon {
+  width: 48px; height: 48px;
+  margin-bottom: 16px;
+  background: var(--off-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.feature-card-icon svg {
+  width: 22px; height: 22px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+.feature-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.feature-card-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--gray-500);
+}
+
+/* ─── Process Steps ─── */
+.process-steps {
+  display: flex;
+  gap: 0;
+  margin-top: 48px;
+  counter-reset: step;
+}
+.process-step {
+  flex: 1;
+  text-align: center;
+  padding: 32px 16px;
+  position: relative;
+  counter-increment: step;
+}
+.process-step::before {
+  content: '0' counter(step);
+  display: block;
+  font-family: var(--font-en);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.process-step::after {
+  content: '';
+  position: absolute;
+  top: 48px; right: 0;
+  width: 1px; height: 40px;
+  background: var(--gray-200);
+}
+.process-step:last-child::after { display: none; }
+.process-step-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.process-step-desc {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+/* ─── CTA Button in Sub Pages ─── */
+.sub-cta {
+  margin-top: 32px;
+}
+.sub-cta .btn-primary {
+  display: inline-flex;
+}
+
+/* ─── Info Section in Sub Pages ─── */
+.sub-info-section {
+  background: var(--off-white);
+  padding: 100px 48px;
+}
+
+/* Info Grid (서브페이지용 — 진료안내 + 오시는길 2단 배치) */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.info-phone {
+  font-family: var(--font-en);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 300;
+  color: var(--navy);
+  letter-spacing: .05em;
+  margin: 24px 0;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.info-table td {
+  padding: 14px 16px;
+  font-size: 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-500);
+}
+.info-table td:first-child {
+  font-weight: 600;
+  color: var(--dark);
+  width: 100px;
+}
+.info-table tr:last-child td { border-bottom: none; }
+
+.info-note {
+  font-size: 13px;
+  color: var(--gray-400);
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.info-address {
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--gray-500);
+  line-height: 1.7;
+}
+
+.info-map {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--gray-100);
+  margin-top: 20px;
+}
+.info-map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info-map-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+.info-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: 1px solid var(--gray-200);
+  font-size: 13px;
+  color: var(--gray-500);
+  border-radius: 4px;
+  transition: border-color .3s, color .3s;
+}
+.info-map-link:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Info Grid 모바일 대응 */
+@media (max-width: 767px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .info-phone { font-size: 28px; }
+  .info-map-links { flex-wrap: wrap; }
+}
