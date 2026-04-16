@@ -962,3 +962,36 @@
   letter-spacing: 0.02em;
   text-align: right;
 }
+
+
+/* Map link brand variants — 카카오 옐로우 / 네이버 그린 (intro#info) */
+.info-map-link.map-link-kakao,
+.info-map-link.map-link-naver {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  border-width: 0;
+  padding: 11px 22px;
+  transition: filter .25s, transform .25s, box-shadow .25s;
+}
+.info-map-link.map-link-kakao {
+  background: #FEE500;
+  color: #191919;
+}
+.info-map-link.map-link-kakao:hover {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(254, 229, 0, 0.35);
+  color: #191919;
+  border-color: transparent;
+}
+.info-map-link.map-link-naver {
+  background: #03C75A;
+  color: #ffffff;
+}
+.info-map-link.map-link-naver:hover {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(3, 199, 90, 0.35);
+  color: #ffffff;
+  border-color: transparent;
+}
