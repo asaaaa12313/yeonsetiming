@@ -854,3 +854,57 @@
 @media (max-width: 767px) {
   .sinus-compare { grid-template-columns: 1fr; gap: 24px; }
 }
+
+
+/* Career groups — 의료진 상세 약력 (intro#page02) */
+.career-groups {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.career-group {
+  padding: 20px 0 22px;
+  border-top: 1px solid var(--gray-100);
+}
+.career-group:first-child { border-top: none; padding-top: 0; }
+.career-label {
+  font-family: var(--font-en);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.career-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.career-group li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--gray-600);
+  letter-spacing: -0.01em;
+}
+.career-group li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.5;
+}
+.career-group li strong {
+  color: var(--navy);
+  font-weight: 700;
+}
