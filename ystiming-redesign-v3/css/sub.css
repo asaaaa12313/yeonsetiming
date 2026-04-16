@@ -320,17 +320,27 @@
 }
 /* Portrait variant — for full-body or vertical shots (e.g., doctor profile) */
 .sub-img-placeholder.portrait {
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 3 / 4;
   background: var(--off-white);
-  max-width: 460px;
-  margin: 0 auto;
+  width: 100%;
+  align-self: start;            /* required for position: sticky inside grid */
+  position: sticky;
+  top: 120px;                   /* fixed header height + breathing room */
 }
 .sub-img-placeholder.portrait::before { display: none; }
 .sub-img-placeholder.portrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 20%;
+}
+@media (max-width: 1024px) {
+  .sub-img-placeholder.portrait {
+    position: static;
+    aspect-ratio: 2 / 3;
+    max-width: 480px;
+    margin: 0 auto;
+  }
 }
 
 /* ─── Facility Gallery Grid ─── */
