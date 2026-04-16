@@ -1,0 +1,54 @@
+name: Fetch Naver Blog
+
+on:
+  schedule:
+    # Every 6 hours at minute 15 (off-peak)
+    - cron: '15 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      blog_id:
+        description: 'Override Naver blog ID (default: wyyezbrmztora)'
+        required: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: ystiming-redesign-v3/scripts/package.json
+
+      - name: Install dependencies
+        working-directory: ystiming-redesign-v3/scripts
+        run: npm install --omit=dev --no-audit --no-fund
+
+      - name: Fetch RSS and build JSON
+        working-directory: ystiming-redesign-v3/scripts
+        env:
+          NAVER_BLOG_ID: ${{ github.event.inputs.blog_id || 'wyyezbrmztora' }}
+        run: node fetch-naver-blog.js
+
+      - name: Inject static cards into blog.html (SEO)
+        working-directory: ystiming-redesign-v3/scripts
+        run: node build-blog-html.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ystiming-redesign-v3/data/blog-posts.json ystiming-redesign-v3/blog.html
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(blog): refresh Naver blog feed [skip ci]"
+            git push
+          fi

@@ -1,0 +1,17 @@
+{
+  "name": "ystiming-blog-fetcher",
+  "version": "1.0.0",
+  "description": "Fetch Naver blog RSS and generate blog-posts.json for 연세타이밍치과 homepage",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch": "node fetch-naver-blog.js",
+    "build": "node build-blog-html.js"
+  },
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
