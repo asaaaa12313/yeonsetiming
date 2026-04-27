@@ -99,25 +99,48 @@
 
   // ─── SCROLL REVEAL + MOTION GRAPHICS ───
 
-  // char-reveal: 글자를 개별 span으로 분리
+  // char-reveal: 글자를 개별 span으로 분리.
+  // 단, <strong>/<br>/<em> 등 inline 태그는 보존 (그래야 strong에 white-space:nowrap 같은 CSS 적용 가능)
+  function _wrapChars(node, counter) {
+    var html = '';
+    var children = node.childNodes;
+    for (var i = 0; i < children.length; i++) {
+      var child = children[i];
+      if (child.nodeType === 3) {
+        var text = child.textContent;
+        for (var j = 0; j < text.length; j++) {
+          var ch = text[j];
+          if (ch === ' ' || ch === '\n') {
+            html += ch;
+          } else {
+            var delay = counter.value * 0.04;
+            html += '<span class="m-char" style="transition-delay:' + delay.toFixed(2) + 's">' + ch + '</span>';
+            counter.value++;
+          }
+        }
+      } else if (child.nodeType === 1) {
+        var tag = child.tagName.toLowerCase();
+        if (tag === 'br') {
+          html += '<br>';
+        } else {
+          var attrs = '';
+          for (var k = 0; k < child.attributes.length; k++) {
+            var a = child.attributes[k];
+            attrs += ' ' + a.name + '="' + a.value.replace(/"/g, '&quot;') + '"';
+          }
+          html += '<' + tag + attrs + '>' + _wrapChars(child, counter) + '</' + tag + '>';
+        }
+      }
+    }
+    return html;
+  }
+
   function prepareCharReveal() {
     var els = document.querySelectorAll('[data-motion="char-reveal"]');
     els.forEach(function (el) {
       if (el.dataset.charReady) return;
-      var text = el.textContent;
-      var html = '';
-      var charIndex = 0;
-      for (var i = 0; i < text.length; i++) {
-        var ch = text[i];
-        if (ch === ' ' || ch === '\n') {
-          html += ch;
-        } else {
-          var delay = charIndex * 0.04;
-          html += '<span class="m-char" style="transition-delay:' + delay.toFixed(2) + 's">' + ch + '</span>';
-          charIndex++;
-        }
-      }
-      el.innerHTML = html;
+      var counter = { value: 0 };
+      el.innerHTML = _wrapChars(el, counter);
       el.dataset.charReady = '1';
     });
   }

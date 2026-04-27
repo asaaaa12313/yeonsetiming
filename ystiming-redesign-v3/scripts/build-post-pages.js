@@ -11,8 +11,44 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { load } from 'cheerio';
 import { renderPostPage, SITE } from './lib/template.js';
 import { normalizeCategory } from './lib/category-map.js';
+
+// 네이버 블로그 글 끝에 정형화돼 있는 "더 알아보기 / 위치 / 상담문의" 푸터 위젯은
+// 우리 사이트에 같은 정보(위치/예약 CTA/외부 원문)가 이미 있어 중복 + 시각적 노이즈.
+// 마커 헤딩 발견 시 그 형제부터 본문 끝까지 모두 잘라낸다.
+const FOOTER_MARKERS = [
+  '연세타이밍치과 더 알아보기',
+  '연세타이밍치과 위치',
+  '연세타이밍치과 상담문의',
+  '연세타이밍치과 더알아보기',  // 띄어쓰기 변형 방어
+];
+
+function trimNaverFooter(bodyHtml) {
+  if (!bodyHtml) return bodyHtml;
+  if (!FOOTER_MARKERS.some(m => bodyHtml.includes(m))) return bodyHtml;
+  const $ = load('<div id="__r">' + bodyHtml + '</div>', { decodeEntities: false });
+  const $root = $('#__r');
+  const $cut = $root.children().filter((_, el) => {
+    const txt = $(el).text();
+    return FOOTER_MARKERS.some(m => txt.includes(m));
+  }).first();
+  if (!$cut.length) return bodyHtml;
+  $cut.nextAll().remove();
+  $cut.remove();
+  // 자른 뒤 본문 끝에 남는 hr / 빈 p 등 장식 잔여 제거
+  let guard = 0;
+  while (guard++ < 10) {
+    const $last = $root.children().last();
+    if (!$last.length) break;
+    const tag = ($last.get(0).tagName || '').toLowerCase();
+    const isEmpty = !$last.text().trim() && !$last.find('img').length;
+    if (tag === 'hr' || isEmpty) { $last.remove(); continue; }
+    break;
+  }
+  return $root.html().trim();
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -52,16 +88,19 @@ async function main() {
 
   // ── 페이지 생성 ────────────────────────────────────
   const buildTime = new Date().toISOString();
-  let written = 0;
+  let written = 0, trimmed = 0;
   for (const post of buildPosts) {
     post.lastReviewedDate = buildTime;
+    const before = post.bodyHtml;
+    const after = trimNaverFooter(before);
+    if (after !== before) trimmed += 1;
     const related = pickRelated(post, buildPosts, 3);
-    const html = renderPostPage({ post, related });
+    const html = renderPostPage({ post: { ...post, bodyHtml: after }, related });
     const outPath = path.join(OUT_DIR, `${post.slug}.html`);
     await fs.writeFile(outPath, html, 'utf-8');
     written += 1;
   }
-  console.log(`[build-post-pages] ✓ ${written}개 .html 생성`);
+  console.log(`[build-post-pages] ✓ ${written}개 .html 생성 (네이버 푸터 정리: ${trimmed}건)`);
 
   // ── stale slug 정리 ────────────────────────────────
   const activeSlugs = new Set(buildPosts.map(p => p.slug));

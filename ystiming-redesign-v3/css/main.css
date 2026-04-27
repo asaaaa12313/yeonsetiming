@@ -401,6 +401,8 @@
   margin-bottom: 24px;
   word-break: keep-all;
 }
+/* "연세타이밍치과" 같은 한 단어가 글자 단위로 줄바꿈되지 않도록 */
+.intro-grid .intro-text .section-title strong { white-space: nowrap; }
 
 .intro-grid .intro-text .section-desc {
   font-size: 1rem;
@@ -1203,3 +1205,11 @@
   .home-blog-cta .btn-primary,
   .home-blog-cta .btn-outline { justify-content: center; }
 }
+
+
+/* ───────────────────────────────────────────────
+   TEMP HIDE — 추후 개발 영역
+   복구 시: 아래 두 selector 제거
+   ─────────────────────────────────────────────── */
+.consult-float,
+.popup-overlay { display: none !important; }

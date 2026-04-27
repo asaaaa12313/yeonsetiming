@@ -488,13 +488,13 @@ ul, ol { list-style: none; }
   border: 1px solid rgba(255,255,255,.12);
   transition: border-color .3s;
 }
-.footer-link-icon:hover { border-color: var(--gold); }
+.footer-link-icon { color: rgba(255,255,255,.45); transition: border-color .3s, color .3s; }
+.footer-link-icon:hover { border-color: var(--gold); color: var(--gold-light); }
 .footer-link-icon svg {
   width: 18px;
   height: 18px;
-  fill: none;
-  stroke: rgba(255,255,255,.3);
-  stroke-width: 1.5;
+  fill: currentColor;
+  stroke: none;
 }
 
 /* ═══════════════════════════════════════════════
