@@ -37,18 +37,32 @@ jobs:
           NAVER_BLOG_ID: ${{ github.event.inputs.blog_id || 'wyyezbrmztora' }}
         run: node fetch-naver-blog.js
 
-      - name: Inject static cards into blog.html (SEO)
+      - name: Fetch full bodies (incremental)
+        working-directory: ystiming-redesign-v3/scripts
+        env:
+          NAVER_BLOG_ID: ${{ github.event.inputs.blog_id || 'wyyezbrmztora' }}
+        run: node fetch-naver-bodies.js
+
+      - name: Inject static cards into blog.html + index.html (SEO)
         working-directory: ystiming-redesign-v3/scripts
         run: node build-blog-html.js
+
+      - name: Build static post detail pages + sitemap
+        working-directory: ystiming-redesign-v3/scripts
+        run: node build-post-pages.js
 
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ystiming-redesign-v3/data/blog-posts.json ystiming-redesign-v3/blog.html
+          git add ystiming-redesign-v3/data/blog-posts.json \
+                  ystiming-redesign-v3/blog.html \
+                  ystiming-redesign-v3/index.html \
+                  ystiming-redesign-v3/blog/ \
+                  ystiming-redesign-v3/sitemap.xml
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore(blog): refresh Naver blog feed [skip ci]"
+            git commit -m "chore(blog): refresh Naver blog feed + static pages [skip ci]"
             git push
           fi

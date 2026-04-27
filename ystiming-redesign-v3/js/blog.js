@@ -104,7 +104,7 @@
     const items = all.slice(start, start + PAGE_SIZE);
 
     if (items.length === 0) {
-      gridEl.innerHTML = `<p class="blog-empty" style="grid-column:1/-1;">해당 카테고리의 글이 아직 없습니다. <a href="${BLOG_URL}" target="_blank" rel="noopener">네이버 블로그에서 더 보기</a></p>`;
+      gridEl.innerHTML = `<p class="blog-empty" style="grid-column:1/-1;">해당 카테고리의 글이 아직 없습니다. <a href="${BLOG_URL}" target="_blank" rel="nofollow noopener">네이버 블로그에서 더 보기</a></p>`;
       pagiEl.innerHTML = '';
       return;
     }
@@ -121,9 +121,11 @@
     const thumb = p.thumbnail
       ? `<img src="${escapeHtml(p.thumbnail)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.classList.add('is-placeholder');this.remove();this.parentElement.innerHTML='YONSEI'">`
       : '';
+    // 내부 상세 페이지로 라우팅. internalUrl이 없으면 (구 데이터) 외부 폴백.
+    const href = p.internalUrl || p.link;
 
     return `
-      <a class="blog-card" href="${escapeHtml(p.link)}" target="_blank" rel="noopener">
+      <a class="blog-card" href="${escapeHtml(href)}">
         <div class="blog-card-thumb ${thumb ? '' : 'is-placeholder'}">${thumb || 'YONSEI'}</div>
         <div class="blog-card-body">
           <div class="blog-card-meta">
@@ -223,7 +225,7 @@
       setStatus('블로그 글을 불러오지 못했습니다. 네이버 블로그에서 직접 확인해주세요.');
       // Render minimal fallback card linking to Naver blog
       gridEl.innerHTML = `
-        <a class="blog-card" href="${BLOG_URL}" target="_blank" rel="noopener" style="grid-column:1/-1;max-width:520px;margin:0 auto;">
+        <a class="blog-card" href="${BLOG_URL}" target="_blank" rel="nofollow noopener" style="grid-column:1/-1;max-width:520px;margin:0 auto;">
           <div class="blog-card-thumb is-placeholder">NAVER BLOG</div>
           <div class="blog-card-body">
             <div class="blog-card-meta"><span class="blog-card-cat">네이버 블로그</span></div>

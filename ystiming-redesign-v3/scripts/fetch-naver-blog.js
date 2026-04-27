@@ -21,6 +21,8 @@ import Parser from 'rss-parser';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { uniqueSlug } from './lib/slug.js';
+import { categoryHref } from './lib/category-map.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -131,6 +133,20 @@ async function main() {
   const merged = Array.from(byId.values())
     .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
     .slice(0, MAX_POSTS);
+
+  // ── SEO 필드 부여: slug, internalUrl, categoryHref, naverUrl ────
+  // 기존 글의 slug는 보존(URL 변경 시 SEO 손실), 신규 글에만 충돌 방지하며 부여
+  const existingSlugs = new Set();
+  merged.forEach(p => { if (p.slug) existingSlugs.add(p.slug); });
+  merged.forEach(p => {
+    if (!p.slug) {
+      p.slug = uniqueSlug(p.title, p.id, existingSlugs);
+      existingSlugs.add(p.slug);
+    }
+    p.internalUrl = `/blog/${p.slug}.html`;
+    p.categoryHref = categoryHref(p.category);
+    p.naverUrl = p.link;
+  });
 
   // Categories — keep insertion order grouped by post frequency
   const catCount = new Map();

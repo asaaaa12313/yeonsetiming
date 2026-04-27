@@ -1,0 +1,558 @@
+/* ═══════════════════════════════════════════
+   BLOG DETAIL PAGE — 본문 + 차별화 블록 + 관련 글
+   디자인 토큰은 common.css의 :root 사용
+   ═══════════════════════════════════════════ */
+
+/* ── 페이지 컨테이너 ─────────────────────────────── */
+.post-page {
+  background: #fff;
+  padding: 120px 0 80px;
+}
+.post-page article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── 서브 히어로 ─────────────────────────────────── */
+.post-hero {
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--gray-100);
+  margin-bottom: 48px;
+}
+.post-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+  color: var(--gray-400);
+  margin-bottom: 24px;
+}
+.post-breadcrumb a {
+  color: var(--gray-500);
+  text-decoration: none;
+  transition: color .2s;
+}
+.post-breadcrumb a:hover { color: var(--navy); }
+.post-breadcrumb-sep { color: var(--gray-200); }
+.post-breadcrumb [aria-current="page"] {
+  color: var(--gray-700);
+  font-weight: 500;
+  /* 너무 길면 한 줄 안에서 절단 */
+  max-width: 36ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.post-cat {
+  display: inline-block;
+  padding: 5px 12px;
+  background: var(--off-white);
+  color: var(--navy);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  transition: background .2s, color .2s;
+}
+.post-cat:hover {
+  background: var(--navy);
+  color: #fff;
+}
+.post-date {
+  font-size: 13px;
+  color: var(--gray-400);
+}
+.post-title {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--dark);
+  letter-spacing: -0.025em;
+  margin: 0 0 16px;
+}
+.post-excerpt {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--gray-500);
+  margin: 0;
+}
+
+/* ── 본문 위 관련 진료 인트로 ──────────────────────── */
+.post-related-care.top {
+  margin-bottom: 32px;
+  padding: 14px 18px;
+  background: var(--gray-50);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  font-size: 14px;
+  color: var(--gray-600);
+}
+.post-related-care.top a {
+  color: var(--navy);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--navy);
+}
+
+/* ── 본문 타이포 ─────────────────────────────────── */
+.post-body {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--gray-700);
+  letter-spacing: -0.005em;
+}
+.post-body > * { margin: 0 0 1.2em; }
+.post-body > *:first-child { margin-top: 0; }
+.post-body > *:last-child { margin-bottom: 0; }
+
+.post-body p { margin: 0 0 1.2em; }
+.post-body p:empty { display: none; }
+
+.post-body h2,
+.post-body h3,
+.post-body h4 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  line-height: 1.4;
+}
+.post-body h2 { font-size: 22px; padding-top: 8px; }
+.post-body h3 { font-size: 19px; }
+.post-body h4 { font-size: 17px; }
+
+.post-body strong, .post-body b { color: var(--dark); font-weight: 700; }
+.post-body em, .post-body i { font-style: italic; }
+.post-body u { text-decoration: underline; text-underline-offset: 3px; }
+
+.post-body a {
+  color: var(--navy);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  word-break: break-word;
+}
+.post-body a:hover { color: var(--gold); }
+
+.post-body ul,
+.post-body ol {
+  padding-left: 1.4em;
+  margin: 0 0 1.2em;
+}
+.post-body li { margin-bottom: 0.4em; }
+
+.post-body blockquote {
+  margin: 1.6em 0;
+  padding: 16px 20px;
+  background: var(--gray-50);
+  border-left: 3px solid var(--navy);
+  color: var(--gray-600);
+  font-size: 16px;
+  border-radius: 0 6px 6px 0;
+}
+.post-body blockquote p:last-child { margin-bottom: 0; }
+
+.post-body hr {
+  border: 0;
+  height: 1px;
+  background: var(--gray-100);
+  margin: 2.4em auto;
+  max-width: 80px;
+}
+
+.post-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.6em auto;
+  border-radius: 8px;
+  background: var(--off-white);
+}
+
+.post-body figure {
+  margin: 1.6em 0;
+  text-align: center;
+}
+.post-body figure img { margin: 0 auto; }
+.post-body figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--gray-400);
+  text-align: center;
+}
+
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.6em 0;
+  font-size: 15px;
+}
+.post-body th, .post-body td {
+  padding: 10px 12px;
+  border: 1px solid var(--gray-100);
+  text-align: left;
+}
+.post-body th { background: var(--gray-50); font-weight: 600; }
+
+/* ── 본문 끝 관련 진료 카드 ────────────────────────── */
+.post-related-care.bottom {
+  margin: 56px 0 0;
+  padding: 24px;
+  background: linear-gradient(135deg, #f8faff 0%, #f0f4fb 100%);
+  border-radius: 12px;
+}
+.post-related-care-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.post-related-care-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  background: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform .25s, box-shadow .25s;
+  box-shadow: 0 2px 6px rgba(12, 27, 46, 0.04);
+}
+.post-related-care-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(12, 27, 46, 0.08);
+}
+.post-related-care-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+  letter-spacing: -0.015em;
+}
+.post-related-care-desc {
+  font-size: 13px;
+  color: var(--gray-500);
+}
+.post-related-care-arrow {
+  font-size: 22px;
+  color: var(--gold);
+  flex: 0 0 auto;
+}
+
+/* ── 예약 CTA 박스 ──────────────────────────────── */
+.post-booking-cta {
+  margin: 32px 0 0;
+  padding: 36px 28px;
+  background: var(--navy);
+  background-image: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border-radius: 14px;
+  color: #fff;
+  text-align: center;
+}
+.post-booking-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.post-booking-sub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 24px;
+}
+.post-booking-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.post-booking-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 18px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: #fff;
+  text-decoration: none;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.post-booking-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.post-booking-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+}
+.post-booking-btn.naver .post-booking-btn-icon { background: #03C75A; color: #fff; }
+.post-booking-btn.kakao .post-booking-btn-icon { background: #FEE500; color: #3C1E1E; }
+.post-booking-btn.primary .post-booking-btn-icon { background: var(--gold); }
+.post-booking-btn-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+.post-booking-btn-value {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+/* ── 작성자 박스 ─────────────────────────────────── */
+.post-author {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin: 24px 0 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid var(--gray-100);
+  border-radius: 12px;
+}
+.post-author-photo {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--off-white);
+}
+.post-author-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.post-author-text { flex: 1; min-width: 0; }
+.post-author-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.post-author-name {
+  font-size: 17px;
+  color: var(--gray-500);
+  margin-bottom: 4px;
+}
+.post-author-name strong {
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 19px;
+  margin-left: 2px;
+}
+.post-author-cred {
+  font-size: 13px;
+  color: var(--gray-500);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+.post-author-link {
+  font-size: 13px;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 600;
+}
+.post-author-link:hover { color: var(--gold); }
+
+/* ── 위치 박스 ───────────────────────────────────── */
+.post-location {
+  margin: 16px 0 0;
+  padding: 20px;
+  background: var(--gray-50);
+  border-radius: 12px;
+}
+.post-location h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 8px;
+}
+.post-location-addr {
+  font-size: 14px;
+  color: var(--gray-700);
+  margin: 0 0 4px;
+  font-weight: 500;
+}
+.post-location-hours {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin: 0 0 8px;
+}
+.post-location-link {
+  font-size: 13px;
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: 600;
+}
+.post-location-link:hover { color: var(--gold); }
+
+/* ── 외부(네이버) 원문 CTA ─────────────────────────── */
+.post-outbound {
+  margin: 32px 0 0;
+  padding: 24px;
+  border: 1px dashed var(--gray-200);
+  border-radius: 12px;
+  text-align: center;
+  background: #fff;
+}
+.post-outbound-label {
+  font-size: 14px;
+  color: var(--gray-500);
+  margin: 0 0 14px;
+}
+.post-outbound-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #03C75A;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: background .2s, transform .2s;
+}
+.post-outbound-btn:hover {
+  background: #02b350;
+  transform: translateY(-1px);
+}
+
+/* ── Disclaimer ─────────────────────────────────── */
+.post-disclaimer {
+  margin: 24px 0 0;
+  padding: 14px 16px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--gray-400);
+  text-align: center;
+  background: transparent;
+}
+
+/* ── 관련 글 ─────────────────────────────────────── */
+.post-related-posts {
+  margin: 64px 0 0;
+  padding-top: 48px;
+  border-top: 1px solid var(--gray-100);
+}
+.post-related-posts-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--dark);
+  margin: 0 0 24px;
+  letter-spacing: -0.02em;
+}
+.post-related-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.post-related-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid var(--gray-100);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.post-related-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(12, 27, 46, 0.06);
+  border-color: transparent;
+}
+.post-related-card-thumb {
+  aspect-ratio: 1.7 / 1;
+  background: var(--off-white);
+  overflow: hidden;
+}
+.post-related-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+}
+.post-related-card:hover .post-related-card-thumb img { transform: scale(1.04); }
+.post-related-card-body { padding: 14px 16px 18px; }
+.post-related-card-cat {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--off-white);
+  color: var(--navy);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.post-related-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--dark);
+  margin: 0;
+  letter-spacing: -0.015em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Responsive ─────────────────────────────────── */
+@media (max-width: 1024px) {
+  .post-page { padding: 96px 0 60px; }
+  .post-page article { padding: 0 20px; }
+  .post-title { font-size: 26px; }
+  .post-related-posts-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .post-page { padding: 80px 0 40px; }
+  .post-hero { margin-bottom: 32px; padding-bottom: 28px; }
+  .post-title { font-size: 22px; }
+  .post-excerpt { font-size: 15px; }
+  .post-body { font-size: 16px; line-height: 1.8; }
+  .post-body h2 { font-size: 20px; }
+  .post-body h3 { font-size: 18px; }
+  .post-body img { margin: 1.2em auto; border-radius: 6px; }
+
+  .post-booking-cta { padding: 28px 20px; }
+  .post-booking-title { font-size: 19px; }
+  .post-booking-buttons { grid-template-columns: 1fr; gap: 8px; }
+  .post-booking-btn { flex-direction: row; justify-content: flex-start; gap: 14px; padding: 14px 18px; }
+  .post-booking-btn-icon { width: 32px; height: 32px; }
+  .post-booking-btn-label,
+  .post-booking-btn-value { display: inline; font-size: 14px; margin-right: 8px; }
+
+  .post-author { flex-direction: column; text-align: center; gap: 14px; padding: 20px 16px; }
+  .post-related-posts-grid { grid-template-columns: 1fr; }
+
+  .post-breadcrumb [aria-current="page"] { max-width: 22ch; }
+}
