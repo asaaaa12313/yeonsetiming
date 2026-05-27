@@ -2,8 +2,8 @@ name: Fetch Naver Blog
 
 on:
   schedule:
-    # Every 6 hours at minute 15 (off-peak)
-    - cron: '15 */6 * * *'
+    # Every Monday at 06:15 UTC (= Mon 15:15 KST) — weekly refresh
+    - cron: '15 6 * * 1'
   workflow_dispatch:
     inputs:
       blog_id:
