@@ -95,13 +95,16 @@
   align-items: center;
 }
 
-/* 비대칭 비율 — 이미지 쪽이 더 큼 */
-.sub-two-col.img-large {
+/* 비대칭 비율 — 이미지 쪽이 더 큼.
+   reverse는 direction:rtl 로 좌우만 뒤집으므로 컬럼 비율은 그대로 둔다.
+   (reverse에서 비율까지 뒤집으면 정작 이미지 쪽이 좁아진다) */
+.sub-two-col.img-large,
+.sub-two-col.img-large.reverse {
   grid-template-columns: 1fr 1.3fr;
 }
-.sub-two-col.img-large.reverse {
-  grid-template-columns: 1.3fr 1fr;
-}
+
+/* 경력·목록처럼 글이 긴 섹션은 텍스트 쪽을 넓게 */
+.sub-two-col.text-wide { grid-template-columns: 1.4fr 1fr; }
 
 /* Reverse column (image left, text right) */
 .sub-two-col.reverse {
@@ -296,9 +299,266 @@
 }
 
 /* ─── Image Placeholder ─── */
+/* 임상 사진은 파노라마·접사·세로컷 등 비율이 제각각이라 4:3 틀에 맞추면
+   실측 27장이 20~57%씩 잘려 무엇을 찍은 사진인지 알 수 없게 된다.
+   → 틀을 이미지 비율에 맞추고 자르지 않는다. (의도적 크롭은 .portrait 만) */
+.sub-img-placeholder > img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+/* 자료형 이미지(.doc): 포스터·인포그래픽·설명 도식처럼 글자가 들어 있어
+   한 픽셀도 잘리면 안 되는 이미지. 비율을 고정하지 않고 전체를 보여준다. */
+.sub-img-placeholder.doc,
+.equipment-img.doc {
+  aspect-ratio: auto;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  padding: 20px;
+  display: block;
+}
+.sub-img-placeholder.doc::before { display: none; }
+/* 카드 그리드 안의 자료형 이미지는 높이를 맞춰야 카드가 나란히 선다 */
+.equipment-img.doc {
+  height: 224px;              /* 일반 .equipment-img(4:3, 224px)와 높이를 맞춘다 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.equipment-img.doc > img { width: auto; max-width: 100%; max-height: 100%; }
+.sub-img-placeholder.doc > img,
+.equipment-img.doc > img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+/* 원본 해상도보다 크게 늘리면 뭉개진다 — 실제 픽셀 폭을 상한으로 */
+.sub-img-placeholder.doc > img { max-width: min(100%, 100vw); }
+.sub-img-placeholder.doc.native > img { width: auto; max-width: 100%; margin: 0 auto; }
+/* 세로로 매우 긴 자료(멸균 포스터 등)는 화면 높이를 넘지 않게 제한 */
+.sub-img-placeholder.doc.tall > img,
+.equipment-img.doc.tall > img {
+  max-height: 720px;
+  width: auto;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .sub-img-placeholder.doc,
+  .equipment-img.doc { padding: 12px; }
+  /* 높이를 제한하면 폭이 198px까지 줄어 글씨를 읽을 수 없다 — 폭을 우선한다 */
+  .sub-img-placeholder.doc.tall > img,
+  .equipment-img.doc.tall > img { max-height: none; width: 100%; }
+}
+
+/* ─── 풀폭 설명 도식 ───
+   가로로 넓은 도식은 2단 레이아웃의 좁은 컬럼에 넣으면 글씨가 뭉개진다.
+   섹션 폭 전체를 쓰고, 설명 항목은 그 아래 2열로 받는다. */
+.diagram-full {
+  margin-top: 48px;
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  padding: 32px;
+}
+.diagram-full > img { width: 100%; height: auto; }
+.sub-bullets.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 44px;
+  margin-top: 44px;
+}
+.sub-section-head { margin-bottom: 48px; }
+.sub-section-head.center { text-align: center; margin-bottom: 56px; }
+.sub-section-head.center .section-title { display: inline-block; }
+.sub-section-head.center .section-desc { margin: 16px auto 0; max-width: 680px; }
+@media (max-width: 768px) {
+  .diagram-full {
+    padding: 16px 16px 12px;
+    margin-top: 32px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* 화면 폭에 맞추면 도식 글씨가 5px까지 작아진다. 최소 폭을 주고 옆으로 밀어 본다 */
+  .diagram-full > img { min-width: 720px; }
+  .diagram-full::after {
+    content: '← 옆으로 밀어서 전체를 보실 수 있습니다';
+    display: block;
+    position: sticky;
+    left: 0;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--gray-400);
+  }
+  .sub-bullets.two-col { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* 근거·개인차 등을 밝히는 각주 */
+.sub-note {
+  margin-top: 28px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--gray-400);
+}
+
+/* ─── 시술 비교표 ─── 한 시술을 '했을 때 / 안 했을 때'로 나란히 놓는 표 */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  font-size: 15px;
+}
+.compare-table th,
+.compare-table td {
+  padding: 18px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--gray-100);
+  line-height: 1.6;
+}
+.compare-table thead th {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  padding-top: 0;
+}
+.compare-table thead th.is-highlight { color: var(--gold); }
+.compare-table tbody th {
+  font-weight: 600;
+  color: var(--gray-500);
+  background: var(--gray-50);
+  text-align: center;
+  width: 26%;
+  font-size: 14px;
+}
+.compare-table td.is-highlight {
+  color: var(--navy);
+  font-weight: 600;
+  background: rgba(43, 122, 232, .05);
+}
+.compare-table tbody tr:last-child th,
+.compare-table tbody tr:last-child td { border-bottom: none; }
+
+/* 시술 후 얻는 것 — 번호 없는 3~4열 요약 */
+.result-points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-100);
+  margin-top: 48px;
+}
+.result-point {
+  background: var(--white);
+  padding: 32px 26px;
+}
+.result-point-num {
+  font-family: var(--font-en);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+.result-point-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.result-point-desc {
+  font-size: 14px;
+  color: var(--gray-500);
+  line-height: 1.75;
+}
+@media (max-width: 900px) {
+  .result-points { grid-template-columns: 1fr; }
+  .compare-table { font-size: 14px; }
+  .compare-table th, .compare-table td { padding: 14px 10px; }
+  .compare-table tbody th { width: 30%; font-size: 13px; }
+}
+
+/* 시술 진행 순서 — 사진 위에 단계 번호를 붙인 가로 배열
+   열 수는 넣는 항목 수에 맞춰 클래스로 지정한다(auto-fit은 빈 열을 만든다) */
+.step-shots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.step-shots.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.step-shots.cols-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1024px) {
+  .step-shots, .step-shots.cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1024px) { .step-shot-img { height: 200px; } }
+@media (max-width: 600px) {
+  .step-shots, .step-shots.cols-2, .step-shots.cols-4 { grid-template-columns: 1fr; }
+  .step-shot-img { height: 240px; }
+}
+.step-shot-img {
+  /* 비율을 고정하면 세로 사진에 좌우 여백이 과하게 생기고,
+     비율을 풀면 카드마다 제목 위치가 어긋난다 → 높이만 고정하고 비율은 유지 */
+  height: 240px;
+  overflow: hidden;
+  background: var(--gray-50);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-shot-img.doc {
+  background: var(--white);
+  border: 1px solid var(--gray-100);
+  padding: 14px;
+}
+.step-shot-img > img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.step-shot-num {
+  font-family: var(--font-en);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.step-shot-title { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.step-shot-desc { font-size: 14px; color: var(--gray-500); line-height: 1.7; }
+
+/* 한 섹션 안에서 이어지는 보조 주제 블록 (예: 소아진료 안의 불소도포) */
+.sub-subblock {
+  margin-top: 96px;
+  padding-top: 72px;
+  border-top: 1px solid var(--gray-100);
+}
+.sub-subtitle {
+  font-size: clamp(20px, 2.2vw, 27px);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--navy);
+  letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.sub-subtitle strong { color: var(--gold); font-weight: 700; }
+@media (max-width: 768px) {
+  .sub-subblock { margin-top: 56px; padding-top: 44px; }
+}
+
+/* 한 섹션에 사진 여러 장을 쌓아 보여줄 때 (대표 1장 + 보조 2장) */
+.img-stack { display: grid; gap: 14px; }
+.img-stack > .sub-img-placeholder { margin: 0; }
+.img-stack-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+@media (max-width: 768px) {
+  .img-stack-row { grid-template-columns: 1fr; }
+}
+
 .sub-img-placeholder {
-  aspect-ratio: 4/3;
-  background: linear-gradient(135deg, var(--gray-100) 0%, var(--gray-200) 50%, var(--gray-100) 100%);
+  aspect-ratio: auto;
+  background: var(--gray-50);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -309,18 +569,10 @@
   position: relative;
   overflow: hidden;
 }
-.sub-img-placeholder::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 40px; height: 40px;
-  border: 1px solid var(--gray-200);
-  border-radius: 50%;
-}
+.sub-img-placeholder::before { display: none; }
 /* Portrait variant — for full-body or vertical shots (e.g., doctor profile) */
 .sub-img-placeholder.portrait {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3 / 4;   /* 인물 사진만 의도적으로 세로 크롭 */
   background: var(--off-white);
   width: 100%;
   align-self: start;            /* required for position: sticky inside grid */
@@ -608,6 +860,8 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 28px;
 }
+/* 카드가 3장인 섹션은 3열로 — 4열이면 오른쪽이 비어 균형이 깨진다 */
+.equipment-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
 .equipment-card {
   background: var(--off-white);
   padding: 0 0 32px;
@@ -655,10 +909,14 @@
 }
 
 @media (max-width: 1024px) {
-  .equipment-grid { grid-template-columns: repeat(2, 1fr); }
+  .equipment-grid,
+  .equipment-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .equipment-img.doc { height: 200px; }
 }
 @media (max-width: 640px) {
-  .equipment-grid { grid-template-columns: 1fr; gap: 20px; }
+  .equipment-grid,
+  .equipment-grid.cols-3 { grid-template-columns: 1fr; gap: 20px; }
+  .equipment-img.doc { height: auto; max-height: 260px; }
 }
 
 /* Clinic gallery — 3x2 grid (intro#page05) */
@@ -866,7 +1124,7 @@
 }
 
 
-/* Career groups — 의료진 상세 약력 (intro#page02) */
+/* Career groups — 의료진 상세 약력 (intro#page01) */
 .career-groups {
   margin-top: 32px;
   display: flex;
@@ -920,13 +1178,12 @@
 }
 
 
-/* Director quote — 원장 인사말 인용구 (intro#page02) */
+/* Director quote — 원장 인사말 인용구 (intro#page01) */
 .director-quote {
   position: relative;
   margin: 24px 0 0;
   padding: 28px 32px 24px 36px;
   background: #fff;
-  border-left: 3px solid var(--gold);
   box-shadow: 0 4px 16px rgba(12,27,46,.04);
 }
 .director-quote::before {

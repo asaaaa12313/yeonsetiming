@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 400" role="img" aria-label="3단계 마취 진행 도식">
+  <title>3단계 안심 마취 시스템 도식</title>
+  <style>
+    .ln{fill:none;stroke:#0A1628;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .ln-t{fill:none;stroke:#8494A7;stroke-width:1.5;stroke-linecap:round}
+    .acc{fill:none;stroke:#2B7AE8;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .soft{fill:#2B7AE8;opacity:.10}
+    .panel{fill:#F8F9FA}
+    .num{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:14px;font-weight:700;fill:#2B7AE8}
+    .tx{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:15px;font-weight:700;fill:#0A1628}
+    .tx-s{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;fill:#4B5C6F}
+    .cap{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;fill:#8494A7}
+  </style>
+
+  <!-- STEP 01 가글형 표면마취 -->
+  <g transform="translate(30,40)">
+    <rect class="panel" x="0" y="0" width="250" height="250" rx="10"/>
+    <circle class="soft" cx="42" cy="42" r="21"/>
+    <circle class="acc" cx="42" cy="42" r="21"/>
+    <text class="num" x="35" y="47">01</text>
+    <!-- 가글 병 -->
+    <g transform="translate(92,84)">
+      <path class="ln" d="M22 0 h20 v14 h6 a10 10 0 0 1 10 10 v56 a10 10 0 0 1 -10 10 h-32 a10 10 0 0 1 -10 -10 v-56 a10 10 0 0 1 10 -10 h6 z"/>
+      <path class="soft" d="M8 44 h48 v36 a10 10 0 0 1 -10 10 h-28 a10 10 0 0 1 -10 -10 z"/>
+      <path class="ln-t" d="M8 44 h48"/>
+    </g>
+    <text class="tx" x="24" y="196">가글형 표면 마취</text>
+    <text class="tx-s" x="24" y="220">입안을 헹궈 잇몸 표면의</text>
+    <text class="tx-s" x="24" y="240">감각을 먼저 둔하게 합니다</text>
+  </g>
+
+  <path class="acc" d="M292 165 h34" stroke-dasharray="5 6"/>
+  <path d="M338 165 l-13 -8 v16 z" fill="#2B7AE8"/>
+
+  <!-- STEP 02 젤 도포 -->
+  <g transform="translate(350,40)">
+    <rect class="panel" x="0" y="0" width="250" height="250" rx="10"/>
+    <circle class="soft" cx="42" cy="42" r="21"/>
+    <circle class="acc" cx="42" cy="42" r="21"/>
+    <text class="num" x="35" y="47">02</text>
+    <!-- 면봉 + 잇몸 -->
+    <g transform="translate(80,86)">
+      <path class="soft" d="M0 62 q45 -18 90 0 v26 h-90 z"/>
+      <path class="ln" d="M0 62 q45 -18 90 0"/>
+      <path class="ln-t" d="M0 88 h90"/>
+      <path class="ln" d="M64 6 l-22 40"/>
+      <ellipse class="acc" cx="38" cy="52" rx="9" ry="7" transform="rotate(-28 38 52)"/>
+    </g>
+    <text class="tx" x="24" y="196">잇몸 젤 도포</text>
+    <text class="tx-s" x="24" y="220">주사 놓을 자리에 젤을 발라</text>
+    <text class="tx-s" x="24" y="240">따끔함을 줄입니다</text>
+  </g>
+
+  <path class="acc" d="M612 165 h34" stroke-dasharray="5 6"/>
+  <path d="M658 165 l-13 -8 v16 z" fill="#2B7AE8"/>
+
+  <!-- STEP 03 전자식 주입 -->
+  <g transform="translate(670,40)">
+    <rect class="panel" x="0" y="0" width="250" height="250" rx="10"/>
+    <circle class="soft" cx="42" cy="42" r="21"/>
+    <circle class="acc" cx="42" cy="42" r="21"/>
+    <text class="num" x="35" y="47">03</text>
+    <!-- 전자 마취기 -->
+    <g transform="translate(84,84)">
+      <rect class="ln" x="0" y="16" width="62" height="74" rx="8"/>
+      <rect class="soft" x="10" y="28" width="42" height="22" rx="4"/>
+      <path class="ln-t" d="M10 28 h42 v22 h-42 z"/>
+      <path class="acc" d="M16 39 h10 M32 39 h6 M44 39 h4"/>
+      <circle class="ln-t" cx="31" cy="70" r="9"/>
+      <path class="ln" d="M62 40 q22 0 26 -18"/>
+      <path class="acc" d="M88 22 l10 -12"/>
+    </g>
+    <text class="tx" x="24" y="196">전자식 정량 주입</text>
+    <text class="tx-s" x="24" y="220">일정한 속도로 천천히 넣어</text>
+    <text class="tx-s" x="24" y="240">압력으로 인한 불편을 줄입니다</text>
+  </g>
+
+  <text class="cap" x="30" y="348">※ 마취 진행 순서를 설명하기 위한 도식입니다. 느끼는 정도는 개인마다 다를 수 있습니다.</text>
+</svg>

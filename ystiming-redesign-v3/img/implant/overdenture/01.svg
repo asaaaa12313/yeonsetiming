@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="임플란트 틀니 개념 도식">
+  <title>임플란트 틀니(오버덴처) 개념 도식</title>
+  <style>
+    .ln{fill:none;stroke:#0A1628;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .ln-t{fill:none;stroke:#8494A7;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .acc{fill:none;stroke:#2B7AE8;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .tooth{fill:#FFFFFF;stroke:#0A1628;stroke-width:1.8;stroke-linejoin:round}
+    .base{fill:#F0D6D6;opacity:.5}
+    .gum{fill:#F0D6D6;opacity:.35}
+    .bone{fill:#E8ECF1;opacity:.6}
+    .fx{fill:#2B7AE8;opacity:.14}
+    .tx{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:15px;font-weight:700;fill:#0A1628}
+    .tx-s{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;fill:#4B5C6F}
+    .tx-a{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13.5px;font-weight:600;fill:#2B7AE8}
+    .cap{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;fill:#8494A7}
+  </style>
+
+  <!-- ══ 상단: 틀니 본체 (분리) ══ -->
+  <g transform="translate(0,34)">
+    <!-- 잇몸색 베이스 -->
+    <path class="base" d="M196 84 Q400 22 604 84 Q612 116 588 126 Q400 78 212 126 Q188 116 196 84 Z"/>
+    <path class="ln" d="M196 84 Q400 22 604 84 Q612 116 588 126 Q400 78 212 126 Q188 116 196 84 Z"/>
+    <!-- 인공치아 9개 (아래로 향한 치관) -->
+    <g class="tooth">
+      <path d="M228 100 h30 l-3 30 q-1 12 -12 12 q-11 0 -12 -12 z"/>
+      <path d="M268 88 h30 l-3 30 q-1 12 -12 12 q-11 0 -12 -12 z"/>
+      <path d="M308 78 h30 l-3 30 q-1 12 -12 12 q-11 0 -12 -12 z"/>
+      <path d="M348 70 h30 l-3 30 q-1 12 -12 12 q-11 0 -12 -12 z"/>
+      <path d="M388 66 h30 l-3 30 q-1 12 -12 12 q-11 0 -12 -12 z"/>
+      <path d="M428 70 h30 l-3 30 q-1 12 -12 12 q-11 0 -12 -12 z"/>
+      <path d="M468 78 h30 l-3 30 q-1 12 -12 12 q-11 0 -12 -12 z"/>
+      <path d="M508 88 h30 l-3 30 q-1 12 -12 12 q-11 0 -12 -12 z"/>
+      <path d="M548 100 h30 l-3 30 q-1 12 -12 12 q-11 0 -12 -12 z"/>
+    </g>
+    <!-- 하면 결합 소켓 -->
+    <path class="acc" d="M318 118 a15 13 0 0 0 30 0"/>
+    <path class="acc" d="M452 118 a15 13 0 0 0 30 0"/>
+    <text class="tx" x="632" y="80">틀니 본체</text>
+    <text class="tx-s" x="632" y="102">직접 빼서 세척</text>
+  </g>
+
+  <!-- ══ 결합 화살표 ══ -->
+  <g>
+    <path class="acc" d="M333 228 v40" stroke-dasharray="6 7"/>
+    <path d="M333 278 l-9 -13 h18 z" fill="#2B7AE8"/>
+    <path class="acc" d="M467 228 v40" stroke-dasharray="6 7"/>
+    <path d="M467 278 l-9 -13 h18 z" fill="#2B7AE8"/>
+    <text class="tx-a" x="356" y="256">딸깍 결합</text>
+  </g>
+
+  <!-- ══ 하단: 잇몸 + 임플란트 ══ -->
+  <g transform="translate(0,294)">
+    <path class="gum" d="M160 60 Q400 8 640 60 L640 96 Q400 52 160 96 Z"/>
+    <path class="bone" d="M160 96 Q400 52 640 96 L640 158 Q400 122 160 158 Z"/>
+    <path class="ln" d="M160 60 Q400 8 640 60"/>
+    <path class="ln-t" d="M160 96 Q400 52 640 96"/>
+    <path class="ln-t" d="M160 158 Q400 122 640 158"/>
+    <text class="tx-s" x="166" y="184">잇몸뼈</text>
+
+    <!-- 임플란트 좌 -->
+    <g>
+      <rect class="fx" x="318" y="22" width="30" height="16" rx="5"/>
+      <path class="acc" d="M318 38 v-10 a15 10 0 0 1 30 0 v10"/>
+      <path class="acc" d="M323 38 h20 l-3 66 a7 7 0 0 1 -14 0 z"/>
+      <g class="ln-t"><path d="M324 52 h18"/><path d="M325 66 h16"/><path d="M326 80 h14"/><path d="M327 94 h12"/></g>
+    </g>
+    <!-- 임플란트 우 -->
+    <g>
+      <rect class="fx" x="452" y="22" width="30" height="16" rx="5"/>
+      <path class="acc" d="M452 38 v-10 a15 10 0 0 1 30 0 v10"/>
+      <path class="acc" d="M457 38 h20 l-3 66 a7 7 0 0 1 -14 0 z"/>
+      <g class="ln-t"><path d="M458 52 h18"/><path d="M459 66 h16"/><path d="M460 80 h14"/><path d="M461 94 h12"/></g>
+    </g>
+    <text class="tx" x="632" y="6">임플란트 2~4개</text>
+    <text class="tx-s" x="632" y="28">틀니를 붙잡는 기둥</text>
+  </g>
+
+  <text class="cap" x="160" y="540">※ 시술 원리를 설명하기 위한 개념 도식으로, 실제 시술 결과와 다를 수 있습니다.</text>
+</svg>

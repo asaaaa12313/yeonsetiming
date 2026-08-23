@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-label="맞춤 스플린트 개념 도식">
+  <title>턱관절 맞춤 스플린트 개념 도식</title>
+  <style>
+    .ln{fill:none;stroke:#0A1628;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .acc{fill:none;stroke:#2B7AE8;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .warn{fill:none;stroke:#D14343;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .tooth{fill:#FFFFFF;stroke:#0A1628;stroke-width:2;stroke-linejoin:round}
+    .dev{fill:#2B7AE8;opacity:.12}
+    .panel{fill:#F8F9FA}
+    .tx{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:16px;font-weight:700;fill:#0A1628}
+    .tx-w{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13.5px;font-weight:600;fill:#D14343}
+    .tx-a{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13.5px;font-weight:600;fill:#2B7AE8}
+    .cap{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;fill:#8494A7}
+  </style>
+
+  <!-- ═══ 좌: 장치 없이 ═══ -->
+  <g transform="translate(40,40)">
+    <rect class="panel" x="0" y="0" width="370" height="300" rx="10"/>
+    <text class="tx" x="26" y="38">장치 없이 이갈이 · 이악물기</text>
+    <text class="tx-w" x="26" y="62">치아끼리 직접 부딪혀 마모됩니다</text>
+
+    <g transform="translate(70,104)">
+      <!-- 상악 치열 (아래로 향한 치관) -->
+      <g>
+        <path class="tooth" d="M0 0 h46 v30 q0 18 -23 18 q-23 0 -23 -18 z"/>
+        <path class="tooth" d="M58 0 h46 v30 q0 18 -23 18 q-23 0 -23 -18 z"/>
+        <path class="tooth" d="M116 0 h46 v30 q0 18 -23 18 q-23 0 -23 -18 z"/>
+      </g>
+      <!-- 충돌 -->
+      <g class="warn">
+        <path d="M18 56 l-8 12"/><path d="M78 56 l8 12"/><path d="M140 56 l-8 12"/>
+      </g>
+      <!-- 하악 치열 (위로 향한 치관) -->
+      <g transform="translate(0,76)">
+        <path class="tooth" d="M0 48 h46 v-30 q0 -18 -23 -18 q-23 0 -23 18 z"/>
+        <path class="tooth" d="M58 48 h46 v-30 q0 -18 -23 -18 q-23 0 -23 18 z"/>
+        <path class="tooth" d="M116 48 h46 v-30 q0 -18 -23 -18 q-23 0 -23 18 z"/>
+      </g>
+      <!-- 압력 화살표 -->
+      <path class="warn" d="M81 -26 v16"/>
+      <path d="M81 -6 l-8 -12 h16 z" fill="#D14343"/>
+      <path class="warn" d="M81 150 v-16"/>
+      <path d="M81 130 l-8 12 h16 z" fill="#D14343"/>
+    </g>
+    <text class="tx-w" x="26" y="272">교합력이 턱관절에 그대로 전달</text>
+  </g>
+
+  <!-- ═══ 우: 스플린트 착용 ═══ -->
+  <g transform="translate(490,40)">
+    <rect class="panel" x="0" y="0" width="370" height="300" rx="10"/>
+    <text class="tx" x="26" y="38">맞춤 스플린트 착용</text>
+    <text class="tx-a" x="26" y="62">장치가 사이에서 힘을 받아냅니다</text>
+
+    <g transform="translate(70,104)">
+      <g>
+        <path class="tooth" d="M0 0 h46 v30 q0 18 -23 18 q-23 0 -23 -18 z"/>
+        <path class="tooth" d="M58 0 h46 v30 q0 18 -23 18 q-23 0 -23 -18 z"/>
+        <path class="tooth" d="M116 0 h46 v30 q0 18 -23 18 q-23 0 -23 -18 z"/>
+      </g>
+      <!-- 스플린트 -->
+      <path class="dev" d="M-12 52 h186 a9 9 0 0 1 9 9 v18 a9 9 0 0 1 -9 9 h-186 a9 9 0 0 1 -9 -9 v-18 a9 9 0 0 1 9 -9 z"/>
+      <path class="acc" d="M-12 52 h186 a9 9 0 0 1 9 9 v18 a9 9 0 0 1 -9 9 h-186 a9 9 0 0 1 -9 -9 v-18 a9 9 0 0 1 9 -9 z"/>
+      <g transform="translate(0,88)">
+        <path class="tooth" d="M0 48 h46 v-30 q0 -18 -23 -18 q-23 0 -23 18 z"/>
+        <path class="tooth" d="M58 48 h46 v-30 q0 -18 -23 -18 q-23 0 -23 18 z"/>
+        <path class="tooth" d="M116 48 h46 v-30 q0 -18 -23 -18 q-23 0 -23 18 z"/>
+      </g>
+      <!-- 분산 화살표 3갈래 -->
+      <g class="acc">
+        <path d="M24 -24 v16"/><path d="M81 -24 v16"/><path d="M138 -24 v16"/>
+      </g>
+      <path class="acc" d="M-8 100 h178" stroke-dasharray="4 6"/>
+    </g>
+    <text class="tx-a" x="26" y="272">힘을 고르게 분산 · 턱 위치 안정</text>
+  </g>
+
+  <text class="cap" x="40" y="378">※ 시술 원리를 설명하기 위한 개념 도식으로, 실제 장치 형태와 다를 수 있습니다.</text>
+</svg>

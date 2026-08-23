@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" role="img" aria-label="교정 와이어 수리 개념 도식">
+  <title>교정 와이어 긴급 수리 개념 도식</title>
+  <style>
+    .ln{fill:none;stroke:#0A1628;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .ln-t{fill:none;stroke:#8494A7;stroke-width:1.4;stroke-linecap:round}
+    .acc{fill:none;stroke:#2B7AE8;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .warn{fill:none;stroke:#D14343;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .tooth{fill:#FFFFFF;stroke:#0A1628;stroke-width:2;stroke-linejoin:round}
+    .brk{fill:#E8ECF1;stroke:#0A1628;stroke-width:1.6}
+    .panel{fill:#F8F9FA}
+    .tx{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:16px;font-weight:700;fill:#0A1628}
+    .tx-s{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13.5px;fill:#4B5C6F}
+    .tx-w{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13.5px;font-weight:600;fill:#D14343}
+    .tx-a{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13.5px;font-weight:600;fill:#2B7AE8}
+    .cap{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:12px;fill:#8494A7}
+  </style>
+
+  <!-- ═══ 좌: 불편한 상태 ═══ -->
+  <g transform="translate(40,40)">
+    <rect class="panel" x="0" y="0" width="340" height="300" rx="10"/>
+    <text class="tx" x="24" y="38">불편한 상태</text>
+    <text class="tx-w" x="24" y="62">와이어 끝이 튀어나와 볼을 찌름</text>
+
+    <g transform="translate(30,110)">
+      <!-- 치아 4개 (치관 + 뿌리) -->
+      <g>
+        <path class="tooth" d="M6 0 h44 q8 0 8 10 v34 q0 16 -14 22 q-8 4 -16 0 q-14 -6 -14 -22 v-34 q0 -10 8 -10 z"/>
+        <path class="tooth" d="M68 0 h44 q8 0 8 10 v34 q0 16 -14 22 q-8 4 -16 0 q-14 -6 -14 -22 v-34 q0 -10 8 -10 z"/>
+        <path class="tooth" d="M130 0 h44 q8 0 8 10 v34 q0 16 -14 22 q-8 4 -16 0 q-14 -6 -14 -22 v-34 q0 -10 8 -10 z"/>
+        <path class="tooth" d="M192 0 h44 q8 0 8 10 v34 q0 16 -14 22 q-8 4 -16 0 q-14 -6 -14 -22 v-34 q0 -10 8 -10 z"/>
+      </g>
+      <!-- 브라켓 -->
+      <rect class="brk" x="17" y="18" width="26" height="16" rx="3"/>
+      <rect class="brk" x="79" y="18" width="26" height="16" rx="3"/>
+      <rect class="brk" x="141" y="18" width="26" height="16" rx="3"/>
+      <rect class="brk" x="203" y="18" width="26" height="16" rx="3"/>
+      <!-- 와이어 + 돌출 끝 -->
+      <path class="ln" d="M17 26 h212"/>
+      <path class="warn" d="M229 26 q26 3 32 26"/>
+      <!-- 자극 표시 -->
+      <g class="warn"><path d="M268 62 l9 10"/><path d="M282 58 l12 4"/><path d="M258 72 l3 12"/></g>
+    </g>
+    <text class="tx-w" x="24" y="270">볼 점막 자극 · 궤양 · 통증</text>
+  </g>
+
+  <!-- ═══ 가운데 화살표 ═══ -->
+  <g transform="translate(400,190)">
+    <path class="acc" d="M8 0 h64"/>
+    <path d="M84 0 l-16 -9 v18 z" fill="#2B7AE8"/>
+    <text class="tx-a" x="0" y="-22">당일 처치</text>
+  </g>
+
+  <!-- ═══ 우: 처치 후 ═══ -->
+  <g transform="translate(520,40)">
+    <rect class="panel" x="0" y="0" width="340" height="300" rx="10"/>
+    <text class="tx" x="24" y="38">처치 후</text>
+    <text class="tx-a" x="24" y="62">돌출부를 자르고 다시 고정</text>
+
+    <g transform="translate(30,110)">
+      <g>
+        <path class="tooth" d="M6 0 h44 q8 0 8 10 v34 q0 16 -14 22 q-8 4 -16 0 q-14 -6 -14 -22 v-34 q0 -10 8 -10 z"/>
+        <path class="tooth" d="M68 0 h44 q8 0 8 10 v34 q0 16 -14 22 q-8 4 -16 0 q-14 -6 -14 -22 v-34 q0 -10 8 -10 z"/>
+        <path class="tooth" d="M130 0 h44 q8 0 8 10 v34 q0 16 -14 22 q-8 4 -16 0 q-14 -6 -14 -22 v-34 q0 -10 8 -10 z"/>
+        <path class="tooth" d="M192 0 h44 q8 0 8 10 v34 q0 16 -14 22 q-8 4 -16 0 q-14 -6 -14 -22 v-34 q0 -10 8 -10 z"/>
+      </g>
+      <rect class="brk" x="17" y="18" width="26" height="16" rx="3"/>
+      <rect class="brk" x="79" y="18" width="26" height="16" rx="3"/>
+      <rect class="brk" x="141" y="18" width="26" height="16" rx="3"/>
+      <rect class="brk" x="203" y="18" width="26" height="16" rx="3"/>
+      <path class="acc" d="M17 26 h212"/>
+      <circle cx="231" cy="26" r="5.5" fill="#2B7AE8"/>
+      <!-- 매끈함 표시 -->
+      <path class="acc" d="M252 26 h16" stroke-dasharray="2 6"/>
+    </g>
+    <text class="tx-a" x="24" y="270">끝단 정리 완료 · 자극 없음</text>
+  </g>
+
+  <text class="cap" x="40" y="378">※ 시술 원리를 설명하기 위한 개념 도식으로, 실제 시술 결과와 다를 수 있습니다.</text>
+</svg>

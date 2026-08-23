@@ -108,8 +108,8 @@ export function renderHeader() {
   <ul class="header-nav">
     <li><a href="/intro.html">연세타이밍치과 소개</a>
       <div class="mega-menu">
-        <a href="/intro.html#page01">치과 철학</a>
-        <a href="/intro.html#page02">의료진 소개</a>
+        <a href="/intro.html#page01">의료진 소개</a>
+        <a href="/intro.html#page02">치과 철학</a>
         <a href="/intro.html#page03">장비 소개</a>
         <a href="/intro.html#page04">언론·사회활동</a>
         <a href="/intro.html#page05">치과 둘러보기</a>
@@ -120,7 +120,7 @@ export function renderHeader() {
       <div class="mega-menu">
         <a href="/special.html#page01">장애인 치과</a>
         <a href="/special.html#page02">고난도 진료</a>
-        <a href="/special.html#page03">3단계 무통마취</a>
+        <a href="/special.html#page03">3단계 안심마취</a>
         <a href="/special.html#page04">외국인 진료</a>
         <a href="/special.html#page05">디지털 치과</a>
         <a href="/special.html#page06">멸균·위생</a>
@@ -138,6 +138,7 @@ export function renderHeader() {
         <a href="/implant.html#page08">임플란트 수리</a>
         <a href="/implant.html#page09">완전·부분 틀니</a>
         <a href="/implant.html#page10">사후 관리</a>
+    <a href="/implant.html#page11">플라즈마</a>
       </div>
     </li>
     <li><a href="/beauty.html">심미 치료 센터</a>
@@ -182,8 +183,8 @@ export function renderHeader() {
 <div class="mega-menu-bar" id="megaMenuBar">
   <div class="mega-menu-col">
     <div class="mega-menu-col-title">연세타이밍치과 소개</div>
-    <a href="/intro.html#page01">치과 철학</a>
-    <a href="/intro.html#page02">의료진 소개</a>
+    <a href="/intro.html#page01">의료진 소개</a>
+    <a href="/intro.html#page02">치과 철학</a>
     <a href="/intro.html#page03">장비 소개</a>
     <a href="/intro.html#page04">언론·사회활동</a>
     <a href="/intro.html#page05">치과 둘러보기</a>
@@ -193,7 +194,7 @@ export function renderHeader() {
     <div class="mega-menu-col-title">연세타이밍치과의 특별함</div>
     <a href="/special.html#page01">장애인 치과</a>
     <a href="/special.html#page02">고난도 진료</a>
-    <a href="/special.html#page03">3단계 무통마취</a>
+    <a href="/special.html#page03">3단계 안심마취</a>
     <a href="/special.html#page04">외국인 진료</a>
     <a href="/special.html#page05">디지털 치과</a>
     <a href="/special.html#page06">멸균·위생</a>
@@ -408,7 +409,7 @@ function renderAuthorBox() {
     <div class="post-author-label">검토 의료진</div>
     <div class="post-author-name">${SITE.doctor.title} <strong>${SITE.doctor.name}</strong></div>
     <div class="post-author-cred">${SITE.doctor.cred}</div>
-    <a class="post-author-link" href="/intro.html#page02">의료진 소개 자세히 보기 →</a>
+    <a class="post-author-link" href="/intro.html#page01">의료진 소개 자세히 보기 →</a>
   </div>
 </aside>`;
 }
@@ -469,7 +470,7 @@ function buildBlogPostingLd(post, canonical) {
     'author': {
       '@type': 'Person',
       'name': `${SITE.doctor.title} ${SITE.doctor.name}`,
-      'url': `${SITE.url}/intro.html#page02`
+      'url': `${SITE.url}/intro.html#page01`
     },
     'publisher': {
       '@type': 'MedicalOrganization',

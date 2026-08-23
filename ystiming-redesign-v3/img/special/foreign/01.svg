@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" role="img" aria-label="외국인 진료 절차 도식">
+  <title>영어 진료 상담 절차 도식</title>
+  <style>
+    .ln{fill:none;stroke:#0A1628;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .ln-t{fill:none;stroke:#4B5C6F;stroke-width:1.5;stroke-linecap:round}
+    .acc{fill:none;stroke:#2B7AE8;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+    .fillsoft{fill:#2B7AE8;opacity:.10}
+    .tx{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:15px;font-weight:600;fill:#1F2937}
+    .tx-s{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;fill:#4B5C6F}
+    .tx-a{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:13px;font-weight:600;fill:#2B7AE8}
+    .num{font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;font-size:14px;font-weight:700;fill:#2B7AE8}
+  </style>
+
+  <!-- STEP 01 상담 -->
+  <g transform="translate(52,90)">
+    <circle class="fillsoft" cx="66" cy="0" r="30"/>
+    <circle class="acc" cx="66" cy="0" r="30"/>
+    <text class="num" x="60" y="6">01</text>
+    <!-- 말풍선 2개 -->
+    <g transform="translate(10,58)">
+      <path class="ln" d="M0 12 h74 a8 8 0 0 1 8 8 v30 a8 8 0 0 1 -8 8 h-46 l-14 14 v-14 h-14 a8 8 0 0 1 -8 -8 v-30 a8 8 0 0 1 8 -8 z"/>
+      <text class="tx-s" x="22" y="42">English</text>
+      <path class="acc" d="M36 84 h74 a8 8 0 0 1 8 8 v30 a8 8 0 0 1 -8 8 h-14 v14 l-14 -14 h-46 a8 8 0 0 1 -8 -8 v-30 a8 8 0 0 1 8 -8 z"/>
+      <text class="tx-a" x="58" y="114">한국어</text>
+    </g>
+    <text class="tx" x="10" y="240">Consultation in English</text>
+    <text class="tx-s" x="0" y="262">영어 상담 · symptoms &amp; history</text>
+  </g>
+
+  <path class="acc" d="M236 150 h56" stroke-dasharray="5 7"/>
+  <path d="M292 150 l-13 -8 v16 z" fill="#2B7AE8"/>
+
+  <!-- STEP 02 진단 설명 -->
+  <g transform="translate(300,90)">
+    <circle class="fillsoft" cx="66" cy="0" r="30"/>
+    <circle class="acc" cx="66" cy="0" r="30"/>
+    <text class="num" x="60" y="6">02</text>
+    <!-- 모니터 + 치아 이미지 -->
+    <g transform="translate(6,58)">
+      <rect class="ln" x="0" y="10" width="120" height="82" rx="6" fill="none"/>
+      <path class="ln-t" d="M46 92 v14 M28 106 h56"/>
+      <path class="ln" d="M34 44 q4 -20 18 -20 q14 0 18 20 q-2 28 -18 28 q-16 0 -18 -28 z"/>
+      <path class="acc" d="M78 34 l10 10 l18 -20"/>
+    </g>
+    <text class="tx" x="6" y="240">Diagnosis on screen</text>
+    <text class="tx-s" x="0" y="262">화면으로 진단 설명 · imaging</text>
+  </g>
+
+  <path class="acc" d="M484 150 h56" stroke-dasharray="5 7"/>
+  <path d="M540 150 l-13 -8 v16 z" fill="#2B7AE8"/>
+
+  <!-- STEP 03 치료 동의 -->
+  <g transform="translate(548,90)">
+    <circle class="fillsoft" cx="66" cy="0" r="30"/>
+    <circle class="acc" cx="66" cy="0" r="30"/>
+    <text class="num" x="60" y="6">03</text>
+    <!-- 서류 + 체크 -->
+    <g transform="translate(20,58)">
+      <path class="ln" d="M6 10 h72 l16 16 v66 a6 6 0 0 1 -6 6 h-82 a6 6 0 0 1 -6 -6 v-76 a6 6 0 0 1 6 -6 z"/>
+      <path class="ln-t" d="M78 10 v16 h16"/>
+      <path class="ln-t" d="M18 46 h48 M18 60 h48 M18 74 h30"/>
+      <circle class="fillsoft" cx="76" cy="76" r="18"/>
+      <path class="acc" d="M67 76 l7 8 l14 -17"/>
+    </g>
+    <text class="tx" x="6" y="240">Treatment plan &amp; consent</text>
+    <text class="tx-s" x="0" y="262">치료 계획 동의 · cost &amp; schedule</text>
+  </g>
+
+  <text class="tx-s" x="52" y="430">※ For languages other than English, please ask when booking. 그 밖의 언어는 예약 시 문의해 주세요.</text>
+</svg>
