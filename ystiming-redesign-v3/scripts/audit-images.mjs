@@ -94,6 +94,7 @@ const CLIENT_ASSETS = [
   ['007.JPG', 'img/intro/equipment/07'],
   ['CT.png', 'img/intro/equipment/08'],
   ['image.png', 'img/care/scaling/05'],
+  ['vrn.ARW', 'img/care/scaling/06'],   // 카메라 RAW → JPEG 변환 후 배치
   ['멸균포스터.jpg', 'img/special/sterilization/02'],
   ['장애인치과.png', 'img/special/disabled/04'],
   ['휠체어 할머니.jpg', 'img/special/disabled/05'],
